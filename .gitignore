@@ -1,4 +1,5 @@
 dwm
+dwmblocks/dwmblocks
 *.diff
 *.rej
 *.orig
