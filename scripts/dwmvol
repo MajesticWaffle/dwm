@@ -1,0 +1,6 @@
+#!/bin/bash
+
+value="$(pamixer --get-volume-human)"
+icon="Vol: "
+printf "%s %s\\n" "$icon" "$value"
+

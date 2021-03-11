@@ -10,7 +10,7 @@ sudo make clean install
 
 #Copy extras to user directory
 echo "Installing scripts."
-cp scripts/clocktest.sh ~/clocktest.sh
-cp scripts/.xinitrc ~/.xinitrc
+
+cp .xinitrc ~/.xinitrc
 
 echo "Done."

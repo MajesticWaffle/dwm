@@ -1,0 +1,4 @@
+#!/bin/bash
+
+value="$(date +"%F %R")"
+printf "%s\\n" "$value"
