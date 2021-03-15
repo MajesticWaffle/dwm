@@ -1,6 +1,14 @@
 #!/bin/bash
 
 value="$(pamixer --get-volume-human)"
-icon="Vol: "
-printf "%s %s\\n" "$icon" "$value"
+valrw="$(pamixer --get-volume)"
+icon=" "
+
+#Cap volume to 100%
+if [ $valrw -gt 100 ]
+then
+	pactl set-sink-volume 0 100%
+fi
+
+printf "[ %s %s ]\\n" "$icon" "$value"
 

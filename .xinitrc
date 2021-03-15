@@ -62,8 +62,8 @@ nitrogen --restore &
 xinput --set-prop 8 'libinput Accel Speed' -0.78 &
 
 #Start clock
-
+dwmnet &
 dwmblocks &
 
 #Start dwm
-exec dwm
+exec dwm >> ~/dwm.log

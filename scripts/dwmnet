@@ -12,10 +12,10 @@ T2="$(cat /sys/class/net/$Interface/statistics/tx_bytes)"
 
 TBPS="$(expr $T2 - $T1)"
 RBPS="$(expr $R2 - $R1)"
-TMBPS="$(expr $TBPS / 131072)"
-RMBPS="$(expr $RBPS / 131072)"
-iconrx="Rx:"
-icontx="Tx:"
+TMBPS="$(expr $TBPS / 121072)"
+RMBPS="$(expr $RBPS / 121072)"
 
-printf "%s %s %s %s\\n" "$iconrx" "$RMBPS Mbit" "$icontx" "$TMBPS Mbit"
+iconrx=""
+icontx=""
 
+printf "[ %s %s  %s %s ]\\n" "$iconrx" "$RMBPS Mbit" "$icontx" "$TMBPS Mbit"
