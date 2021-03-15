@@ -13,4 +13,25 @@ echo "Installing scripts."
 
 cp .xinitrc ~/.xinitrc
 
+#install dwmblocks
+echo "Installing dwmblocks"
+cd dwmblocks
+sudo make clean install
+
+cd ..
+
+#install dmenu
+echo "Installing dmenu"
+cd dmenu
+sudo cp config.def.h config.h
+sudo make clean install
+
+cd ..
+
+#install st
+echo "Installing st"
+cd st
+sudo cp config.def.h config.h
+sudo make clean install
+
 echo "Done."

@@ -41,8 +41,9 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
+
 	/* class  		instance	title     	tags mask   	isfloating	monitor */
-	
+	{ "github desktop",	NULL,		NULL,		tag_code,	0,		-1 },
 	{ "code-oss",		NULL,		NULL,		tag_code,	0,		-1 },
 	{ "jetbrains-clion",	NULL,		NULL,		tag_code,	0,		-1 },
 	{ "jetbrains-idea",	NULL,		NULL,		tag_code,	0,		-1 },
