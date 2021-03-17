@@ -8,7 +8,7 @@
 #define tag_code 	1 << 1
 #define tag_disc 	1 << 2
 #define tag_steam 	1 << 3
-#define tag_lock	1 << 4
+#define tag_lock 	1 << 4
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
@@ -34,7 +34,8 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "", "" };		//General (FF, term, etc), Coding, Discord, Steam, Lock
+
+static const char	*tags[] = { "", "", "", "", "" };		//General (FF, term, etc), Coding, Discord, Steam, Lock
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -42,14 +43,17 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 
-	/* class  		instance	title     	tags mask   	isfloating	monitor */
-	{ "github desktop",	NULL,		NULL,		tag_code,	0,		-1 },
-	{ "code-oss",		NULL,		NULL,		tag_code,	0,		-1 },
-	{ "jetbrains-clion",	NULL,		NULL,		tag_code,	0,		-1 },
-	{ "jetbrains-idea",	NULL,		NULL,		tag_code,	0,		-1 },
+	/* class		instance	title	tags mask   	isfloating	monitor */
+	{ "github desktop",	NULL,		NULL,	tag_code,	0,		-1 },
+	{ "code-oss",		NULL,		NULL,	tag_code,	0,		-1 },
+	{ "jetbrains-clion",	NULL,		NULL,	tag_code,	0,		-1 },
+	{ "jetbrains-idea",	NULL,		NULL,	tag_code,	0,		-1 },
+	
+	{ "Steam",		NULL,		NULL,	tag_steam, 	0,		0 },
+	{ "discord",		NULL,		NULL,	tag_disc, 	0,		0 },
 
-	{ "Steam",		NULL,		NULL,		tag_steam, 	0,		-1 },
-	{ "discord",		NULL,		NULL,		tag_disc, 	0,		-1 },
+	//Games
+	{ "csgo-linux64",	NULL,		NULL,	tag_steam,	0,		0 },
 };
 
 /* layout(s) */
@@ -97,10 +101,9 @@ static Key keys[] = {
 	/* Screenshot */
 	{ WINKEY|ShiftMask,		XK_s, 				spawn, {.v = scrcmd } },
 
-	/* Switch to lock tag */
-
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
