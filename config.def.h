@@ -44,6 +44,14 @@ static const Rule rules[] = {
 	 */
 
 	/* class		instance	title	tags mask   	isfloating	monitor */
+	
+        /*
+	* { "brave-browser",	NULL,		NULL,	tag_brow,	0,		-1 },
+	* { "Brave-browser",	NULL,		NULL,	tag_brow,	0,		-1 },
+	* { "firefox",		NULL,		NULL,	tag_brow,	0,		-1 },
+	* { "Navigator",		NULL,		NULL,	tag_brow,	0,		-1 },
+	*/
+
 	{ "github desktop",	NULL,		NULL,	tag_code,	0,		-1 },
 	{ "code-oss",		NULL,		NULL,	tag_code,	0,		-1 },
 	{ "jetbrains-clion",	NULL,		NULL,	tag_code,	0,		-1 },
@@ -144,11 +152,6 @@ static Key keys[] = {
 /* button definitions */
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static Button buttons[] = {
-	/* click                event mask      button          function        argument */
-	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
-	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
-	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
-	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },

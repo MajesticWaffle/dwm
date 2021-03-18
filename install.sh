@@ -12,6 +12,7 @@ sudo make clean install
 echo "Installing scripts."
 
 cp .xinitrc ~/.xinitrc
+cp .bashrc ~/.bashrc
 
 #install dwmblocks
 echo "Installing dwmblocks"
