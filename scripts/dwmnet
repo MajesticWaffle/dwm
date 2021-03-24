@@ -18,4 +18,4 @@ RMBPS="$(expr $RBPS / 121072)"
 iconrx=""
 icontx=""
 
-printf "[ %s %s  %s %s ]\\n" "$iconrx" "$RMBPS Mbit" "$icontx" "$TMBPS Mbit"
+printf "[ %s %s  %s %s]\\n" "$iconrx" "$RMBPS Mbit" "$icontx" "$TMBPS Mbit"

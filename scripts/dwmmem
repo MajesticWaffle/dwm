@@ -1,6 +1,6 @@
 #!/bin/bash
 
-value="$(free -m | awk 'NR==2{printf "%s/%s Mb\n", $3,$2,$3*100/$2 }')"
+value="$(free -m | awk 'NR==2{printf "%s/%s\ Mb", $3,$2,$3*100/$2 }')"
 icon=""
 
 printf "[ %s %s ]\\n" "$icon" "$value"

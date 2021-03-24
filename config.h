@@ -13,14 +13,14 @@
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int gappx     = 5;        /* gaps between windows */
-static const unsigned int snap      = 32;       /* snap pixel */
+static const unsigned int snap      = 16;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Source Code Pro:size=10", "Font Awesome:Size=12" };
+static const char *fonts[]          = { "Source Code Pro:size=10", "Font Awesome 5 Free Solid:size=10", "Font Awesome 5 Brands:size=10" };
 static const char dmenufont[]       = "Source Code Pro:size=10";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
@@ -35,7 +35,7 @@ static const char *colors[][3]      = {
 
 /* tagging */
 
-static const char	*tags[] = { "", "", "", "", "" };		//General (FF, term, etc), Coding, Discord, Steam, Lock
+static const char	*tags[] = { "", "", "", "", "" };		//General (FF, term, etc), Coding, Discord, Steam, Lock
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -61,11 +61,11 @@ static const Rule rules[] = {
 	{ "discord",		NULL,		NULL,	tag_disc, 	0,		0 },
 
 	//Games
-	{ "csgo-linux64",	NULL,		NULL,	tag_steam,	0,		0 },
+	{ "csgo-linux64",	"csgo-linux64",	NULL,	tag_steam,	0,		0 },
 };
 
 /* layout(s) */
-static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
+static const float mfact     = 0.50; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 
@@ -99,6 +99,8 @@ static const char *downvol[] = { "voldec", NULL };
 static const char *mutevol[] = { "volmut", NULL };
 
 static const char *scrcmd[] = { "scrshot", NULL};
+
+static const char *lockcmd[] = { "slock", NULL};
 
 static Key keys[] = {
 	/* Volume Keys */
@@ -141,12 +143,8 @@ static Key keys[] = {
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
 	TAGKEYS(                        XK_4,                      3)
-	TAGKEYS(                        XK_5,                      4)
-	TAGKEYS(                        XK_6,                      5)
-	TAGKEYS(                        XK_7,                      6)
-	TAGKEYS(                        XK_8,                      7)
-	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ShiftMask,             XK_F12,      quit,           {0} },
+	{ MODKEY,			XK_5,      spawn,	   {.v = lockcmd } },
+	{ MODKEY|ShiftMask,             XK_F12,    quit,           {0} },
 };
 
 /* button definitions */
