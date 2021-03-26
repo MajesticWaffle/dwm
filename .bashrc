@@ -11,13 +11,13 @@ alias iusearchbtw='neofetch --logo'
 alias cd..='cd ..'
 
 export PS1="\[\e[1;34m\]\u\[\e[m\]@\h \[\e[34m\]\w\[\e[m\]> "
-export PATH="/home/trevorskupien/scripts:/home/trevorskupien/dwm/scripts:$PATH"
+export PATH="/usr/local/bin/Discord:/home/trevorskupien/scripts:/home/trevorskupien/dwm/scripts:$PATH"
 
 # Start DWM automatically on first TTY
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-	#startx
+	startx
 else
 	#Display neofetch and file directory on other tty
-	neofetch
+	#neofetch
 	ls
 fi

@@ -4,7 +4,7 @@
 
 
 /* Im small brain so this makes it easy */
-#define tag_gen 	1
+#define tag_home 	1
 #define tag_code 	1 << 1
 #define tag_disc 	1 << 2
 #define tag_steam 	1 << 3
@@ -17,7 +17,7 @@ static const unsigned int snap      = 16;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
-static const int showsystray        = 1;     /* 0 means no systray */
+static const int showsystray        = 0;     /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Source Code Pro:size=10", "Font Awesome 5 Free Solid:size=10", "Font Awesome 5 Brands:size=10" };
@@ -27,10 +27,20 @@ static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#1C71D8";
+
+static const unsigned int baralpha = 0xD0;
+static const unsigned int borderalpha = OPAQUE;
+
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray1 },
 	[SchemeSel]  = { col_gray4, col_cyan,  col_gray2 },
+};
+
+static const unsigned int alphas[][3]      = {
+	/*               fg      bg        border     */
+	[SchemeNorm] = { OPAQUE, baralpha, borderalpha },
+	[SchemeSel]  = { OPAQUE, baralpha, borderalpha },
 };
 
 /* tagging */
@@ -45,12 +55,12 @@ static const Rule rules[] = {
 
 	/* class		instance	title	tags mask   	isfloating	monitor */
 	
-        /*
-	* { "brave-browser",	NULL,		NULL,	tag_brow,	0,		-1 },
-	* { "Brave-browser",	NULL,		NULL,	tag_brow,	0,		-1 },
-	* { "firefox",		NULL,		NULL,	tag_brow,	0,		-1 },
-	* { "Navigator",		NULL,		NULL,	tag_brow,	0,		-1 },
-	*/
+        
+	//{ "brave-browser",	NULL,		NULL,	tag_web,	0,		-1 },
+	//{ "Brave-browser",	NULL,		NULL,	tag_web,	0,		-1 },
+	//{ "firefox",		NULL,		NULL,	tag_web,	0,		-1 },
+	//{ "Navigator",		NULL,		NULL,	tag_web,	0,		-1 },
+	
 
 	{ "github desktop",	NULL,		NULL,	tag_code,	0,		-1 },
 	{ "code-oss",		NULL,		NULL,	tag_code,	0,		-1 },
@@ -111,6 +121,8 @@ static Key keys[] = {
 	/* Screenshot */
 	{ WINKEY|ShiftMask,		XK_s, 				spawn, {.v = scrcmd } },
 
+	/* Lock */
+	{ WINKEY,			XK_l,	   spawn,	   {.v = lockcmd } },
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 
@@ -139,11 +151,14 @@ static Key keys[] = {
 	{ MODKEY,                       XK_minus,  setgaps,        {.i = -1 } },
 	{ MODKEY,                       XK_equal,  setgaps,        {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
+	
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
 	TAGKEYS(                        XK_4,                      3)
-	{ MODKEY,			XK_5,      spawn,	   {.v = lockcmd } },
+	TAGKEYS(			XK_5,			   4)
+	TAGKEYS(			XK_6,			   5)
+
 	{ MODKEY|ShiftMask,             XK_F12,    quit,           {0} },
 };
 
