@@ -111,31 +111,31 @@ float alpha = 0.90;
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
 	/* 8 normal colors */
-	"#151515",
-	"#E01B24",
-	"#33D17A",
-	"#FF7800",
-	"#1A5FB4",
-	"#9141AC",
-	"#62A0EA",
-	"#D0D0D0",
-
+	"#2E3440",
+	"#BF616A",
+	"#A3BE8C",
+	"#D08770",
+	"#5E81AC",
+	"#B48EAD",
+	"#88C0D0",
+	"#E5E9F0",
+	
 	/* 8 bright colors */
-	"#505050",
-	"#ED333B",
-	"#57E389",
-	"#FFA348",
-	"#1C71D8",
-	"#C061CB",
-	"#99C1F1",
-	"#F5F5F5",
+	"#2E3440",
+	"#BF616A",
+	"#A3BE8C",
+	"#D08770",
+	"#5E81AC",
+	"#B48EAD",
+	"#88C0D0",
+	"#E5E9F0",
 
 	[255] = 0,
 
 	/* more colors can be added after 255 to use with DefaultXX */
-	"#cccccc", //256: Cursor
+	"#ECEFF4", //256: Cursor
 	"#555555", //257: Rev. Cursor
-	"#101010", //258: Background
+	"#15181E", //258: Background
 };
 
 

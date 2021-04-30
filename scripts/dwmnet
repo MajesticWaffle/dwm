@@ -15,6 +15,13 @@ RBPS="$(expr $R2 - $R1)"
 TMBPS="$(expr $TBPS / 121072)"
 RMBPS="$(expr $RBPS / 121072)"
 
+PEAK="$(cat /home/trevorskupien/network_peak.txt)"
+
+if [ $RMBPS -gt $PEAK ] 
+then
+	echo $RMBPS > /home/trevorskupien/network_peak.txt
+fi
+
 iconrx=""
 icontx=""
 

@@ -5,10 +5,11 @@
 
 /* Im small brain so this makes it easy */
 #define tag_home 	1
-#define tag_code 	1 << 1
-#define tag_disc 	1 << 2
-#define tag_steam 	1 << 3
-#define tag_lock 	1 << 4
+#define tag_fold	1 << 1
+#define tag_code 	1 << 2
+#define tag_disc 	1 << 3
+#define tag_steam 	1 << 4
+#define tag_games	1 << 5
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
@@ -22,11 +23,11 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Source Code Pro:size=10", "Font Awesome 5 Free Solid:size=10", "Font Awesome 5 Brands:size=10" };
 static const char dmenufont[]       = "Source Code Pro:size=10";
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#1C71D8";
+static const char col_gray1[]       = "#2E3440";
+static const char col_gray2[]       = "#3B4242";
+static const char col_gray3[]       = "#E5E9F0";
+static const char col_gray4[]       = "#ECEFE4";
+static const char col_cyan[]        = "#5E81AC";
 
 static const unsigned int baralpha = 0xD0;
 static const unsigned int borderalpha = OPAQUE;
@@ -45,7 +46,7 @@ static const unsigned int alphas[][3]      = {
 
 /* tagging */
 
-static const char	*tags[] = { "", "", "", "", "" };		//General (FF, term, etc), Coding, Discord, Steam, Lock
+static const char	*tags[] = { "", "", "", "", "", "" };		//General (FF, term, etc), Coding, Discord, Steam, Lock
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -59,9 +60,9 @@ static const Rule rules[] = {
 	//{ "brave-browser",	NULL,		NULL,	tag_web,	0,		-1 },
 	//{ "Brave-browser",	NULL,		NULL,	tag_web,	0,		-1 },
 	//{ "firefox",		NULL,		NULL,	tag_web,	0,		-1 },
-	//{ "Navigator",		NULL,		NULL,	tag_web,	0,		-1 },
+	//{ "Navigator",	NULL,		NULL,	tag_web,	0,		-1 },
 	
-
+	{ "thunar",		NULL,		NULL,	tag_fold,	0,		-1 },
 	{ "github desktop",	NULL,		NULL,	tag_code,	0,		-1 },
 	{ "code-oss",		NULL,		NULL,	tag_code,	0,		-1 },
 	{ "jetbrains-clion",	NULL,		NULL,	tag_code,	0,		-1 },
@@ -71,7 +72,9 @@ static const Rule rules[] = {
 	{ "discord",		NULL,		NULL,	tag_disc, 	0,		0 },
 
 	//Games
-	{ "csgo-linux64",	"csgo-linux64",	NULL,	tag_steam,	0,		0 },
+	{ "csgo-linux64",	"csgo-linux64",		NULL,	tag_games,	0,		0 },
+	{ "minecraft-launcher", "Minecraft Launcher", 	NULL,	tag_games,	0,		0 } 
+
 };
 
 /* layout(s) */
@@ -104,25 +107,25 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", "fish", NULL };
 
+static const char *thuncmd[] = { "thunar", "~", NULL };
 static const char *upvol[]   = { "volinc", NULL };
 static const char *downvol[] = { "voldec", NULL };
 static const char *mutevol[] = { "volmut", NULL };
 
 static const char *scrcmd[] = { "scrshot", NULL};
 
-static const char *lockcmd[] = { "slock", NULL};
-
 static Key keys[] = {
 	/* Volume Keys */
 	{0,				XF86XK_AudioLowerVolume, 	spawn, {.v = downvol } },
-	{0,				XF86XK_AudioMute, 		spawn, {.v = mutevol } },
+	{0,				XF86XK_AudioMute, 			spawn, {.v = mutevol } },
 	{0,				XF86XK_AudioRaiseVolume, 	spawn, {.v = upvol } },
 	
 	/* Screenshot */
-	{ WINKEY|ShiftMask,		XK_s, 				spawn, {.v = scrcmd } },
+	{ WINKEY|ShiftMask,				XK_s, 				spawn, {.v = scrcmd } },
 
-	/* Lock */
-	{ WINKEY,			XK_l,	   spawn,	   {.v = lockcmd } },
+	/* Thunar */
+	{MODKEY|ShiftMask,				XK_t,				spawn, {.v = thuncmd} },
+	
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 
@@ -156,8 +159,8 @@ static Key keys[] = {
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
 	TAGKEYS(                        XK_4,                      3)
-	TAGKEYS(			XK_5,			   4)
-	TAGKEYS(			XK_6,			   5)
+	TAGKEYS(						XK_5,			   4)
+	TAGKEYS(						XK_6,			   5)
 
 	{ MODKEY|ShiftMask,             XK_F12,    quit,           {0} },
 };
